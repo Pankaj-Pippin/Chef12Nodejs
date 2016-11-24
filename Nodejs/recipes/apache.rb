@@ -33,7 +33,7 @@ node["Nodejs"]["sites"].each do |sitename, data|
 		  :servername => data["servername"]
 		)
 	  end
-	  notifies :run, "execute[enable-sites]"
+	 
 	  #notifies :restart, "service[httpd]"
 
 	directory "/var/www/html/#{sitename}/public_html" do
@@ -45,7 +45,7 @@ node["Nodejs"]["sites"].each do |sitename, data|
 		end	  
 	  
 	  
-
+	notifies :run, "execute[enable-sites]"
 end
 
 
