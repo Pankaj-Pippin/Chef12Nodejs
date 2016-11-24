@@ -34,7 +34,7 @@ node["Nodejs"]["sites"].each do |sitename, data|
 		)
 	  end
 	  notifies :run, "execute[enable-sites]"
-	  notifies :restart, "service[httpd]"
+	  #notifies :restart, "service[httpd]"
 
 	directory "/var/www/html/#{sitename}/public_html" do
 		action :create
@@ -52,5 +52,10 @@ end
  
 execute "chmod" do
   command "chmod -R 777 /opt"
+  action :run
+end
+
+execute "httpd" do
+  command "/sbin/service httpd restart"
   action :run
 end
