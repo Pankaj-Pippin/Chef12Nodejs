@@ -69,5 +69,15 @@ bash 'install_webmin' do
   yum -y install perl perl-Net-SSLeay openssl perl-IO-Tty
   rpm -U webmin-1.820-1.noarch.rpm
   /usr/libexec/webmin/changepass.pl /etc/webmin root Agent007#!
+  mkdir /home/ec2-user/cadmin
+  chmod -R 777 /home/ec2-user/cadmin
+  EOH
+end
+
+bash 'install_npm' do
+  user 'root'
+  cwd '/home/ec2-user/cadmin'
+  code <<-EOH
+  sudo npm install > install_npm.log
   EOH
 end
