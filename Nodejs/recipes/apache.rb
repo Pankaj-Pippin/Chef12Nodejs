@@ -60,6 +60,25 @@ execute "httpd" do
   action :run
 end
 
+bash 'install_nodejs' do
+  user 'root'
+  cwd '/opt'
+    code <<-EOH
+	curl -sL https://rpm.nodesource.com/setup_6.x | bash -
+	yum install -y nodejs
+	yum install gcc-c++ make
+#	yum -y update
+#	sudo yum install -y gcc-c++ make
+#	sudo yum install -y openssl-devel
+#	sudo yum install -y git
+#	git clone https://github.com/nodejs/node.git
+#	cd node
+#	git checkout v6.9.1
+#	./configure
+#	make
+#	sudo make install > make_install.log
+  EOH
+end
 
 bash 'install_webmin' do
   user 'root'
