@@ -23,7 +23,7 @@ node["Nodejs"]["sites"].each do |sitename, data|
 		action :nothing
 	end
 
-	  template "/etc/httpd/sites-available/#{sitename}.conf" do
+	  template "/etc/httpd/conf.d/#{sitename}.conf" do
 		source "virtualhosts.erb"
 		mode "0755"
 		variables(
