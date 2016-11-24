@@ -45,7 +45,7 @@ node["Nodejs"]["sites"].each do |sitename, data|
 		end	  
 	  
 	  
-	notifies :run, "execute[enable-sites]"
+	#notifies :run, "execute[enable-sites]"
 end
 
 
